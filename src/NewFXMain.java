@@ -3,9 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMain.java to edit this template
  */
 
+import com.sun.javafx.logging.PlatformLogger.Level;
+import com.sun.media.jfxmedia.logging.Logger;
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -20,29 +26,27 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
-        btn.setText("change colour to green");
+        btn.setText("Click here");
         btn.setOnAction(new EventHandler<ActionEvent>() {
-        int c=0;    
+     
             @Override
             public void handle(ActionEvent event) {
-                c++;
-                System.out.println("color will change to green");
-                if(c%2==0)
-                {
-                    btn.setText("change colour to green");
-                    btn.setStyle("-fx-background-color: #ff0000;");
-                }
-                else
-                {
-                    btn.setText("change colour to red");
-                    btn.setStyle("-fx-background-color: #00ff00;");
-                }
-               
-
                 
+                try{
+                    System.out.println("hello");
+                    Parent pane = (Parent)FXMLLoader.load(getClass().getResource("FXML.fxml"));
+                    primaryStage.getScene().setRoot(pane);
+                }    
+                catch(IOException ex)
+                {
+                    //Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE,null,ex);
+                }        
             }
         });
-        
+
+
+
+
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         
