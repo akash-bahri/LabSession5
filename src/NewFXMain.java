@@ -44,9 +44,6 @@ public class NewFXMain extends Application {
             }
         });
 
-
-
-
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         
